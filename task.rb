@@ -5,6 +5,8 @@ def q1
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
+  names << '斎藤'
+  puts names
 
 end
 
@@ -13,6 +15,11 @@ def q2
   array2 = ["bird", "bat", "tiger"]
 
   # 以下に回答を記載
+  array = [
+    array1,
+    array2
+  ]
+  puts array
 
 end
 
