@@ -42,21 +42,25 @@ def q5
   array2 = [1, 5, 8, 10]
 
   # 以下に回答を記載
-
+  puts array1.empty?
+  puts array2.empty?
 end
 
 def q6
   numbers1 = [1, 2, 3, 4, 5]
 
   # 以下に回答を記載
-
+  numbers1.each.with_index do |nunmber,i|
+    numbers1[i] = nunmber * 10
+  end
+  puts numbers1
 end
 
 def q7
   array = ["1", "2", "3", "4", "5"]
 
   # 以下に回答を記載
-
+  array = array.map(&:to_i)
   # 以下は変更しないで下さい
   p array
 end
@@ -65,6 +69,11 @@ def q8
   programming_languages = %w(ruby php python javascript)
 
   # 以下に回答を記載
+  upper_case_programming_languages = []
+  programming_languages.each do |programming_language|
+    programming_language.capitalize!
+    upper_case_programming_languages << programming_language.upcase
+  end
 
   # 以下は変更しないで下さい
   p programming_languages
@@ -75,7 +84,9 @@ def q9
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
-
+  names.each.with_index(1) do |name,i|
+    puts "会員No.#{i} #{name}さん"
+  end
 end
 
 def q10
