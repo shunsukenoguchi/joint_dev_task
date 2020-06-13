@@ -149,7 +149,6 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  attr_accessor :name, :age, :gender
   def initialize(params)
     @name = params[:name]
     @age = params[:age]
@@ -176,16 +175,16 @@ end
 
 class UserQ18
   # 以下に回答を記載
-  attr_accessor :name, :age
+
   def initialize(params)
     @name = params[:name]
     @age = params[:age]
   end
   def introduce
     if @age > 10
-      puts "こんにちは、#{@name}と申します。宜しくお願いいたします。"
+      "こんにちは、#{@name}と申します。宜しくお願いいたします。"
     else
-      puts "はいさいまいど〜，#{@name}です！！！"
+      "はいさいまいど〜，#{@name}です！！！"
     end
   end
 end
@@ -201,11 +200,9 @@ end
 
 class Item
   # 以下を修正して下さい
-  def initialize(name)
+  attr_reader  :name
+  def initialize(name:)
     @name = name
-  end
-  def name
-    puts @name[:name]
   end
 end
 
@@ -217,32 +214,30 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor :name, :age
-  def initialize(params)
-    @name = params[:name]
-    @age = params[:age]
+  attr_reader :name, :age
+  def initialize(name:, age:)
+    @name = name
+    @age = age
   end
 end
 
 class Zoo
   # 以下に回答を記載
-  attr_accessor :name, :entry_fee
-  def initialize(params)
-    @name = params[:name]
-    @infant_fee = params[:entry_fee][:infant]
-    @children_fee = params[:entry_fee][:children]
-    @adult_fee = params[:entry_fee][:adult]
-    @senior_fee = params[:entry_fee][:senior]
+  attr_reader :name, :entry_fee
+  def initialize(name:, entry_fee:)
+    @name = name
+    @entry_fee = entry_fee
   end
   def info_entry_fee(user)
-    if user.age <= 3
-      puts "#{user.name}さんの入場料金は#{@infant_fee}円です。"
-    elsif user.age <= 10
-      puts "#{user.name}さんの入場料金は#{@children_fee}円です。"
-    elsif user.age <= 32
-      puts "#{user.name}さんの入場料金は#{@adult_fee}円です。"
-    else
-      puts "#{user.name}さんの入場料金は#{@senior_fee}円です。"
+    case user.age 
+    when 0..5
+      puts "#{user.name}さんの入場料金は#{@entry_fee[:infant]}円です。"
+    when 4..12
+      puts "#{user.name}さんの入場料金は#{@entry_fee[:children]}円です。"
+    when 13..64
+      puts "#{user.name}さんの入場料金は#{@entry_fee[:adult]}円です。"
+    when 65..120
+      puts "#{user.name}さんの入場料金は#{@entry_fee[:senior]}円です。"
     end   
   end
 end
